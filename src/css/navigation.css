@@ -1,0 +1,38 @@
+.Navigation {
+    background-color: red;
+}
+.Navigation-header {
+    text-align: center;
+}
+.Navigation-buttons {
+    padding: 0 0 1em 3em;
+}
+.Navigation button {
+    width: 45%;
+    height: 3em;
+    margin-left: 1em;
+    padding: 0;
+    margin-top: 1em;
+}
+
+.Navigation-fact h2 {
+    font-size: 1em;
+    text-align: center;
+}
+
+.Navigation-fact p {
+    text-align: right;
+    padding: 0 1em 1em 0;
+}
+
+.Navigation form {
+    text-align: center;
+    margin: 1em;
+}
+
+.Navigation input {
+    border-radius: 1px;
+    margin: 1em;
+    height: 3em;
+    padding: 0;
+}
