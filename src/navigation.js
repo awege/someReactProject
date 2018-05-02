@@ -16,6 +16,7 @@ export default class Navigation extends Component {
             authorChange: '',
             submitClicked: false
         };
+        this.everyFact = getAllFacts();
         this.handleClick1 = this.handleClick1.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -35,7 +36,7 @@ export default class Navigation extends Component {
     }
     handleClick2() {
         this.setState({ showText2: true });
-        const facts = getAllFacts();
+        const facts = this.everyFact;
         let factString = '';
         for (let i = 0; i < facts.length; i++) {
             factString += facts[i].text + ' Author: ' +
@@ -44,19 +45,32 @@ export default class Navigation extends Component {
         this.setState({ allFacts: factString });
 
     }
-
+    /*
     handleChange(event) {
         this.setState({value: event.target.value});
-      }
+      }*/
     /*
     factChange = ({ value }) => {
         this.setState({
             factChange: value,
         });
     }*/
+    handleChange(event) {
+        const target = event.target;
+        const value =  target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+      }
     
     handleSubmit(event) {
-        alert('A fact was submitted: ' + this.state.value);
+        const newAuthor = this.state.authorChange.toString();
+        const newFact = this.state.value.toString();
+        console.log(newAuthor);
+        this.everyFact.push(`{Author: ${newAuthor}}{text: ${newFact}}`);
+        alert('A fact was submitted: ' + this.state.value+ ' Author: ' + this.state.authorChange);
         event.preventDefault();
         this.setState({
             submitClicked: true
@@ -72,7 +86,11 @@ export default class Navigation extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Fact:
-                        <input type="text" name="factChange" value={this.state.value} onChange={this.handleChange} />
+                        <input type="text" name="value" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        Author:
+                        <input type="text" name="authorChange" value={this.state.authorChange} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
