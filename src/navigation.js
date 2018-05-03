@@ -45,16 +45,7 @@ export default class Navigation extends Component {
         this.setState({ allFacts: factString });
 
     }
-    /*
-    handleChange(event) {
-        this.setState({value: event.target.value});
-      }*/
-    /*
-    factChange = ({ value }) => {
-        this.setState({
-            factChange: value,
-        });
-    }*/
+   
     handleChange(event) {
         const target = event.target;
         const value =  target.value;
@@ -69,7 +60,12 @@ export default class Navigation extends Component {
         const newAuthor = this.state.authorChange.toString();
         const newFact = this.state.value.toString();
         console.log(newAuthor);
-        this.everyFact.push(`{Author: ${newAuthor}}{text: ${newFact}}`);
+        const newFactToAdd = {
+                 Author: newAuthor,
+                 text: newFact
+                };
+        console.log(newFactToAdd);
+        this.everyFact.push(newFactToAdd);
         alert('A fact was submitted: ' + this.state.value+ ' Author: ' + this.state.authorChange);
         event.preventDefault();
         this.setState({
