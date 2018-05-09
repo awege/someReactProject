@@ -11,7 +11,7 @@ class App extends Component{
         <hr></hr>
         <Navigation />
         <Footer />
-      </div>
+      </div> 
     );
   }
 }

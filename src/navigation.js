@@ -25,9 +25,9 @@ export default class Navigation extends Component {
 
     handleClick1() {
         this.setState({ showText1: true });
-        if (this.state.number < 3) {
+        if (this.state.number < this.everyFact.length) {
             console.log(this.state.number);
-            const facts = getOneFact(this.state.number);
+            const facts = this.everyFact[this.state.number];
             this.setState({ fact: facts.text });
             this.setState({ author: 'Author: ' + facts.Author })
             const newNumber = this.state.number + 1;
@@ -45,51 +45,42 @@ export default class Navigation extends Component {
         this.setState({ allFacts: factString });
 
     }
-   
+
     handleChange(event) {
         const target = event.target;
-        const value =  target.value;
+        const value = target.value;
         const name = target.name;
-    
+
         this.setState({
-          [name]: value
+            [name]: value
         });
-      }
-    
+    }
+
     handleSubmit(event) {
         const newAuthor = this.state.authorChange.toString();
         const newFact = this.state.value.toString();
         console.log(newAuthor);
         const newFactToAdd = {
-                 Author: newAuthor,
-                 text: newFact
-                };
+            Author: newAuthor,
+            text: newFact
+        };
         console.log(newFactToAdd);
         this.everyFact.push(newFactToAdd);
-        alert('A fact was submitted: ' + this.state.value+ ' Author: ' + this.state.authorChange);
+        alert('A fact was submitted: ' + this.state.value + ' Author: ' + this.state.authorChange);
         event.preventDefault();
         this.setState({
             submitClicked: true
-          });
-      }
+        });
+    }
 
     render() {
+        const everyFactsLenngth = this.everyFact.length;
+        const facts = this.everyFact;
         return (
             <div className="Navigation">
                 <div className="Navigation-header">
                     <h1> Click buttons to reveal the truth </h1>
                 </div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Fact:
-                        <input type="text" name="value" value={this.state.value} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Author:
-                        <input type="text" name="authorChange" value={this.state.authorChange} onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
                 <div className="Navigation-buttons">
                     <button onClick={this.handleClick1}>
                         {this.state.showText1 ? 'Get another fact' : 'Get one fact'}
@@ -106,6 +97,37 @@ export default class Navigation extends Component {
                 <div className="Navigation-allFacts">
                     <p> {this.state.allFacts} </p>
                 </div>
+                <div className="IncomeQuiz-InputContainer-selectedNumbers">
+                    {Array.from(new Array(everyFactsLenngth), (x, i) => i + 1).map(idx => (
+                        <div className="allFactsList">
+                            <div className="allFacts-author">{facts[idx-1].Author}:</div>
+                            <div className="allFacts-text"> {facts[idx-1].text}</div>
+                        </div>
+                    ))}
+                </div>
+                <hr className="commentLine" />
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        New Comment
+                        <input 
+                            className="newCommentText"
+                            type="text"
+                            name="value"
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <label>
+                        Author:
+                        <input 
+                            type="text"
+                            name="authorChange"
+                            value={this.state.authorChange}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <input className="submitBtn" type="submit" value="Comment" />
+                </form>
             </div>
 
         );
