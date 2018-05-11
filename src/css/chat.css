@@ -1,43 +1,36 @@
-.Navigation {
+.Chat {
     background-color: red;
     padding-bottom: 2em;
+    width: 25%;
+    float: right;
 }
-.Navigation-header {
+.Chat-header {
     text-align: center;
+    font-size: 1.2em;
 }
-.Navigation-buttons {
-    padding: 0 0 1em 3em;
-}
-.Navigation button {
-    width: 45%;
+
+.Chat button {
+    width: 80%;
     height: 3em;
-    margin-left: 1em;
+    margin-left: 10%;
     padding: 0;
     margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-.Navigation-fact h2 {
-    font-size: 1em;
+
+.Chat form {
     text-align: center;
 }
 
-.Navigation-fact p {
-    text-align: right;
-    padding: 0 1em 1em 0;
-}
-
-.Navigation form {
-    text-align: center;
-}
-
-.allFactsList {
+.ChatList {
     width: 80%;
     padding-left: 10%;
     overflow-wrap: break-word;
     margin-bottom: 0.5em;
 }
 
-.allFacts-text {
+.ChatText {
     font-size: 1em;
     text-align: center;
     border: 1px solid;
@@ -46,19 +39,21 @@
     position: relative;
 }
 
-.allFacts-author{
+.ChatNickname {
     text-align: left;
     padding: 0 1em 0 0;
     height: 20px;
+    width: 80%;
 }
 
-.newCommentText {
+.newChatMessage {
     width: 80%;
     overflow-wrap: break-word;
     display: block;
     margin-left: 10%;
     margin-top: 1em;
     height: 20px;
+    margin-bottom: 1em;
 }
 
 .submitBtn {
@@ -67,7 +62,7 @@
     height: 20px
 }
 
-.commentLine {
+.ChatLine {
     width: 80%;
     margin-top: 1em;
     margin-bottom: 1em;
