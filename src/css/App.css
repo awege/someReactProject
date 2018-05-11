@@ -4,12 +4,17 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .header {
+  background-color: rgb(187, 151, 151);
+  width: 40%;
   color: white;
   text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  margin-left: 30%;
+  border: 1px solid;
 }
 
 body {
-  background-color: black;
+  background-color: rgb(209, 185, 185);
 }
 
 .Navigation-buttons {
