@@ -11,3 +11,12 @@
 body {
   background-color: black;
 }
+
+.Navigation-buttons {
+  text-align: center;
+}
+
+.Navigation-button1 {
+  width: 15%;
+  height: 30px;
+}

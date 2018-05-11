@@ -10,7 +10,6 @@ export default class Chat extends Component {
             author: false,
             number: 0,
             value: '',
-            authorChange: '',
             submitClicked: false
         };
         this.everyFact = getAllFacts();
@@ -34,7 +33,7 @@ export default class Chat extends Component {
     }
 
     handleSubmit(event) {
-        const newAuthor = this.state.authorChange.toString();
+        const newAuthor = this.props.nickname;
         const newFact = this.state.value.toString();
         const newFactToAdd = {
             Author: newAuthor,
@@ -45,7 +44,6 @@ export default class Chat extends Component {
         this.setState({
             submitClicked: true,
             value: '',
-            authorChange: ''
         });
     }
 
@@ -75,7 +73,7 @@ export default class Chat extends Component {
                 {this.state.showAllComments ?
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Reply
+                        Comment
                         <input 
                             className="newChatMessage"
                             type="text"
@@ -84,16 +82,7 @@ export default class Chat extends Component {
                             onChange={this.handleChange}
                         />
                     </label>
-                    <label>
-                        Nickname
-                        <input 
-                            type="text"
-                            name="authorChange"
-                            value={this.state.authorChange}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-                    <input className="submitBtn" type="submit" value="Reply" />
+                    <input className="submitBtn" type="submit" value="Comment" />
                 </form>: '' }
             </div>
 

@@ -1,0 +1,23 @@
+.LogIn {
+  background-color: red;
+  padding-bottom: 2em;
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+
+.NickName-submitBtn {
+  margin: 1em;
+  border: 0;
+  height: 20px
+}
+
+.NickNameChangeField {
+  width: 80%;
+  overflow-wrap: break-word;
+  display: block;
+  margin-left: 10%;
+  margin-top: 1em;
+  height: 20px;
+  margin-bottom: 1em;
+}
