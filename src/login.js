@@ -33,7 +33,6 @@ export default class LogIn extends Component {
   }
 
   render() {
-    const nick = this.state.nickName;
     return (
         <div className="LogIn">
             <div className="LogIn-header">
