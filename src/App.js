@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import "./css/App.css";
 import Chat from "./chat.js";
 import Footer from "./footer.js";
@@ -8,11 +8,11 @@ import { setAccount } from './store/actions/index.js';
 import { connect } from 'react-redux';
 import LogIn from './login.js'
 
-class App extends Component{
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnClicked: [false, false ,false],
+      btnClicked: [false, false, false],
     };
     this.navigationButtonClick = this.navigationButtonClick.bind(this);
   }
@@ -22,15 +22,20 @@ class App extends Component{
     e.target.blur();
     const name = parseInt(e.target.name);
     const changeClick = [false, false, false];
-    changeClick[name] = true;
-    this.setState({ btnClicked: changeClick }); 
-    console.log(this.state.btnClicked);
-  
+    if (this.state.btnClicked[name] === false){
+      changeClick[name] = true;
+    }
+    this.setState({ btnClicked: changeClick });
   }
 
-  render(){
-    console.log(this.props.nicknamers);
-    return(
+  render() {
+    const clickedBckgrnd = {
+      background: 'lightgrey',
+    };
+    const nonClickedBckgrnd = {
+      background: 'white',
+    };
+    return (
       <div className="App">
         <h1 className="header"> Welcome! </h1>
         <hr></hr>
@@ -39,6 +44,7 @@ class App extends Component{
             className="Navigation-button1"
             name="0"
             onClick={this.navigationButtonClick}
+            style={this.state.btnClicked[0] ? clickedBckgrnd : nonClickedBckgrnd}
             value="Harry"
           >
             Harry
@@ -47,7 +53,8 @@ class App extends Component{
             className="Navigation-button1"
             name="1"
             onClick={this.navigationButtonClick}
-            value="Ron"         
+            style={this.state.btnClicked[1] ? clickedBckgrnd : nonClickedBckgrnd}
+            value="Ron"
           >
             Ron
           </button>
@@ -55,13 +62,14 @@ class App extends Component{
             className="Navigation-button1"
             name="2"
             onClick={this.navigationButtonClick}
+            style={this.state.btnClicked[2] ? clickedBckgrnd : nonClickedBckgrnd}
             value="Hermione"
           >
             Hermione
-          </button>  
+          </button>
         </div>
         <hr></hr>
-        <LogIn 
+        <LogIn
           setAccount={this.props.setAccount}
           currentNick={this.props.nicknamers}
         />
@@ -69,12 +77,12 @@ class App extends Component{
           nickname={this.props.nicknamers}
         />
         <div className="MiddleContent">
-          {this.state.btnClicked[0] ? <LoadContent character='Harry'/>:''}
-          {this.state.btnClicked[1] ? <LoadContent character='Ron'/>:''}
-          {this.state.btnClicked[2] ? <LoadContent character='Hermione'/>:''}
+          {this.state.btnClicked[0] ? <LoadContent character='Harry' /> : ''}
+          {this.state.btnClicked[1] ? <LoadContent character='Ron' /> : ''}
+          {this.state.btnClicked[2] ? <LoadContent character='Hermione' /> : ''}
         </div>
         <Footer />
-      </div> 
+      </div>
     );
   }
 }
@@ -84,10 +92,12 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
+const mapStateToProps = state => (
+  {
+    nicknamers: state.bestSite.accountIdText,
+  }
+);
 export default connect(
-  state => (
-    {
-      nicknamers: state.bestSite.accountIdText,
-    }),
+  mapStateToProps,
   mapDispatchToProps,
 )(App);

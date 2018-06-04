@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./css/login.css";
+import React, { Component } from 'react';
+import './css/login.css';
 
 export default class LogIn extends Component {
   constructor(props) {
@@ -17,13 +17,13 @@ export default class LogIn extends Component {
     const nickNameChanges = target.value;
 
     this.setState({
-      nickNameChange: nickNameChanges
+      nickNameChange: nickNameChanges,
     });
   }
 
   handleSubmit(event) {
     const newNick = this.state.nickNameChange.toString();
-    this.props.setAccount(this.state.nickName);
+    this.props.setAccount(newNick);
     event.preventDefault();
     this.setState({
       nickName: newNick,

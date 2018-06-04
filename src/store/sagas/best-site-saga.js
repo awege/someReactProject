@@ -1,5 +1,5 @@
-import { put, takeEvery, select } from 'redux-saga/effects';
-import { actionTypes } from '../constants.js';
+import { put, takeEvery } from 'redux-saga/effects';
+import { actionTypes } from '../constants';
 
 function* setAccount(action) {
   const { payload } = action;

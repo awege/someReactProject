@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import bestSiteReducer from './best-site-reducer.js';
+import bestSiteReducer from './best-site-reducer';
 
 const rootReducer = combineReducers({
   bestSite: bestSiteReducer,

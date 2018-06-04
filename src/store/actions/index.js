@@ -1,4 +1,4 @@
-import { actionTypes } from '../constants.js';
+import { actionTypes } from '../constants';
 
 function setAccount(text) {
   return {
