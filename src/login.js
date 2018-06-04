@@ -5,7 +5,6 @@ export default class LogIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
       nickName: '',
       nickNameChange: ''
     };
@@ -24,9 +23,9 @@ export default class LogIn extends Component {
 
   handleSubmit(event) {
     const newNick = this.state.nickNameChange.toString();
+    this.props.setAccount(this.state.nickName);
     event.preventDefault();
     this.setState({
-      loggedIn: true,
       nickName: newNick,
       nickNameChange: '',
     });
@@ -48,9 +47,9 @@ export default class LogIn extends Component {
                     />
                 <input className="NickName-submitBtn" type="submit" value="Set nickname" />
             </form>
-            {this.state.loggedIn ? this.state.nickName : ''}
+            {this.props.currentNick}
         </div>
 
     );
-}
+  }
 }

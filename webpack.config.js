@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const bundlePath = path.resolve(__dirname, "/dist/");
 
 module.exports = {
+  mode: 'development',
   entry: "./src/index.js",
   module: {
     rules: [
@@ -10,7 +11,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        options: { presets: ['env'] }
+        options: { presets: ['env'], cacheDirectory: true }
       },
       {
         test: /\.css$/,

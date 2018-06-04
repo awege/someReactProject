@@ -3,39 +3,18 @@ import "./css/App.css";
 import Chat from "./chat.js";
 import Footer from "./footer.js";
 import "./css/login.css";
-import LoadContent from "./loadContent.js"
+import LoadContent from "./loadContent.js";
+import { setAccount } from './store/actions/index.js';
+import { connect } from 'react-redux';
+import LogIn from './login.js'
 
 class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
-      nickName: 'Anonymous',
-      nickNameChange: '',
       btnClicked: [false, false ,false],
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.navigationButtonClick = this.navigationButtonClick.bind(this);
-  }
-
-  handleChange(event) {
-    const target = event.target;
-    const nickNameChanges = target.value;
-
-    this.setState({
-      nickNameChange: nickNameChanges
-    });
-  }
-
-  handleSubmit(event) {
-    const newNick = this.state.nickNameChange.toString();
-    event.preventDefault();
-    this.setState({
-      loggedIn: true,
-      nickName: newNick,
-      nickNameChange: '',
-    });
   }
 
   navigationButtonClick(e) {
@@ -50,6 +29,7 @@ class App extends Component{
   }
 
   render(){
+    console.log(this.props.nicknamers);
     return(
       <div className="App">
         <h1 className="header"> Welcome! </h1>
@@ -81,24 +61,12 @@ class App extends Component{
           </button>  
         </div>
         <hr></hr>
-        <div className="LogIn">
-            <div className="LogIn-header">
-                <h2> Please write your nickname </h2>
-            </div>
-            <form onSubmit={this.handleSubmit}>
-                    <input 
-                        className="NickNameChangeField"
-                        type="text"
-                        name="nickNameChange"
-                        value={this.state.nickNameChange}
-                        onChange={this.handleChange}
-                    />
-                <input className="NickName-submitBtn" type="submit" value="Set nickname" />
-            </form>
-            {this.state.loggedIn ? this.state.nickName : ''}
-        </div>
+        <LogIn 
+          setAccount={this.props.setAccount}
+          currentNick={this.props.nicknamers}
+        />
         <Chat
-          nickname={this.state.nickName}
+          nickname={this.props.nicknamers}
         />
         <div className="MiddleContent">
           {this.state.btnClicked[0] ? <LoadContent character='Harry'/>:''}
@@ -110,5 +78,16 @@ class App extends Component{
     );
   }
 }
+const mapDispatchToProps = dispatch => (
+  {
+    setAccount: (text) => { dispatch(setAccount(text)); },
+  }
+);
 
-export default App;
+export default connect(
+  state => (
+    {
+      nicknamers: state.bestSite.accountIdText,
+    }),
+  mapDispatchToProps,
+)(App);
