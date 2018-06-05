@@ -1,0 +1,31 @@
+.Wiki-text {
+    background-color: rgb(187, 151, 151);
+    float: right;
+    width: 48.8%;
+    border: 0.5px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding-right: 0.6em;
+    border: 0.5px solid;
+  }
+  
+  .Wiki-text h2{
+    margin: 0;
+    text-align: center;
+    padding-top: 1em;
+  }
+  
+  .Wiki-text p {
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .Wiki-text img {
+      height: 10em;
+      width: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2em;
+  }

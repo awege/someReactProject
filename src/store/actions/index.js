@@ -6,7 +6,21 @@ function setAccount(text) {
     payload: { text },
   };
 }
+function setWikiRes(array) {
+  return {
+    type: actionTypes.INIT_WIKI_RES,
+    payload: { array },
+  }
+}
+function setWikiImage(text) {
+  return {
+    type: actionTypes.INIT_WIKI_IMAGE,
+    payload: { text },
+  }
+}
 
 export {
   setAccount,
+  setWikiRes,
+  setWikiImage
 };

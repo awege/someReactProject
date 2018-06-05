@@ -5,7 +5,6 @@ export default class LogIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickName: '',
       nickNameChange: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -15,7 +14,6 @@ export default class LogIn extends Component {
   handleChange(event) {
     const target = event.target;
     const nickNameChanges = target.value;
-
     this.setState({
       nickNameChange: nickNameChanges,
     });
@@ -26,7 +24,6 @@ export default class LogIn extends Component {
     this.props.setAccount(newNick);
     event.preventDefault();
     this.setState({
-      nickName: newNick,
       nickNameChange: '',
     });
   }
