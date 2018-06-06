@@ -24,6 +24,15 @@ export default class WikiSearch extends Component {
   handleSubmit(event) {
     const currentText = this.state.searchTextChange.toString();
     event.preventDefault();
+    if (currentText === '') {
+      this.props.setWikiRes('');
+      this.props.setWikiImage('');
+      this.setState({
+        searchText: currentText,
+        searchTextChange: '',
+      });
+      return;
+    }
     const searchRes = fetchWiki(currentText).then(res => {
       this.props.setWikiRes(res)
       fetchWikiImage(res[1][0]).then(res => {

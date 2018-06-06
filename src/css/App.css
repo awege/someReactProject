@@ -1,5 +1,23 @@
+.Content {
+  display: inline-flex;
+  width: 100%;
+}
+
+
 .MiddleContent {
-  height: 226px;
+  min-height: 226px;
+  width: 50%;
+  display: inline-block;
+}
+
+.LeftContent {
+  width: 25%;
+  display: inline-block;
+}
+
+.RightContent {
+  width: 25%;
+  display: inline-block;
 }
 
 .App {

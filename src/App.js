@@ -75,23 +75,29 @@ class App extends Component {
           </button>
         </div>
         <hr></hr>
-        <LogIn
-          setAccount={this.props.setAccount}
-          currentNick={this.props.nicknamers}
+        <div className="Content">
+        <div className="LeftContent">
+          <LogIn
+            setAccount={this.props.setAccount}
+            currentNick={this.props.nicknamers}
+          />
+          <WikiSearch
+          setWikiRes={this.props.setWikiRes}
+          setWikiImage={this.props.setWikiImage}
         />
-        <Chat
-          nickname={this.props.nicknamers}
-        />
+        </div>
         <div className="MiddleContent">
           {this.state.btnClicked[0] ? <LoadContent character='Harry' /> : ''}
           {this.state.btnClicked[1] ? <LoadContent character='Ron' /> : ''}
           {this.state.btnClicked[2] ? <LoadContent character='Hermione' /> : ''}
           {isWikiRes ? <WikiResult wikiRes={this.props.wikiResult} wikiImage={this.props.wikiImage}/> : ''}
         </div>
-        <WikiSearch
-          setWikiRes={this.props.setWikiRes}
-          setWikiImage={this.props.setWikiImage}
-        />
+        <div className="RightContent">
+          <Chat
+            nickname={this.props.nicknamers}
+          />
+        </div>
+        </div>
         <Footer />
       </div>
     );
