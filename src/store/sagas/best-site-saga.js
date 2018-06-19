@@ -3,10 +3,10 @@ import { actionTypes } from '../constants';
 
 function* setAccount(action) {
   const { payload } = action;
-  const { text } = payload;
+  const { array } = payload;
   yield put({
     type: actionTypes.SET_ACCOUNT_IDTEXT,
-    payload: { accountIdText: text },
+    payload: { accountId: array },
   });
 }
 

@@ -1,9 +1,9 @@
 import { actionTypes } from '../constants';
 
-function setAccount(text) {
+function setAccount(array) {
   return {
     type: actionTypes.INIT_ACCOUNT_ID,
-    payload: { text },
+    payload: { array },
   };
 }
 function setWikiRes(array) {

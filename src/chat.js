@@ -33,7 +33,7 @@ export default class Chat extends Component {
     }
 
     handleSubmit(event) {
-        const newAuthor = this.props.nickname;
+        const newAuthor = this.props.nickname[0];
         const newFact = this.state.value.toString();
         const newFactToAdd = {
             Author: newAuthor,

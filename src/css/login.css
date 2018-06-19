@@ -13,8 +13,25 @@
   border: 0;
   height: 20px
 }
+.SignIn-Button button{
+  display: block;
+  margin: 0 auto;
+  border: 0;
+  height: 20px;
+  margin-bottom: 1em;
+}
 
 .NickNameChangeField {
+  width: 80%;
+  overflow-wrap: break-word;
+  display: block;
+  margin-left: 10%;
+  margin-top: 1em;
+  height: 20px;
+  margin-bottom: 1em;
+}
+
+.PasswordChangeField {
   width: 80%;
   overflow-wrap: break-word;
   display: block;

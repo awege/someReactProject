@@ -105,7 +105,7 @@ class App extends Component {
 }
 const mapDispatchToProps = dispatch => (
   {
-    setAccount: (text) => { dispatch(setAccount(text)); },
+    setAccount: (array) => { dispatch(setAccount(array)); },
     setWikiRes: (array) => { dispatch(setWikiRes(array)); },
     setWikiImage: (text) => { dispatch(setWikiImage(text)); },
   }
@@ -113,7 +113,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => (
   {
-    nicknamers: state.bestSite.accountIdText,
+    nicknamers: state.bestSite.accountId,
     wikiResult: state.bestSite.wikiRes,
     wikiImage: state.bestSite.wikiImage,
   }
